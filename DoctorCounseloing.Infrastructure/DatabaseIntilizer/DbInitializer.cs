@@ -20,7 +20,7 @@ namespace DoctorCounseloing.Infrastructure.DatabaseIntilizer
             new Clinic("Ali", "Ali", "AliAliAliAliAliAliAli", "AliAliAliAliAliAliAli");
             dbContext.Clinics.Add(clinic) ;
 
-            Doctor[] doctor =
+            Doctor[] doctors =
             {
                     new Doctor("Ali", "Ali", "AliAliAliAliAliAliAli", "AliAliAliAliAliAliAli",clinic.Id),
                     new Doctor("Ahmed", "Ahmed", "AhmedAhmedAhmedAhmed", "AhmedAhmedAhmedAhmed",clinic.Id),
@@ -30,7 +30,7 @@ namespace DoctorCounseloing.Infrastructure.DatabaseIntilizer
             };
 
 
-            dbContext.Doctors.AddRange(doctor);
+            dbContext.Doctors.AddRange(doctors);
 
             Patient[] patient =
             {
@@ -40,6 +40,32 @@ namespace DoctorCounseloing.Infrastructure.DatabaseIntilizer
                 new Patient("Samy", "Samy", new DateTime()),
                 new Patient("Anwar", "Anwar", new DateTime()),
              };
+
+            foreach (var doctor in doctors)
+            {
+                SchduleSLot[] slots =
+                {
+                    new SchduleSLot(0,1,doctor.Id),
+                    new SchduleSLot(0,2,doctor.Id),
+                    new SchduleSLot(0,3,doctor.Id),
+                    new SchduleSLot(0,4,doctor.Id),
+                    new SchduleSLot(0,5,doctor.Id),
+                    new SchduleSLot(0,6,doctor.Id),
+                    new SchduleSLot(0,7,doctor.Id),
+                    new SchduleSLot(1,1,doctor.Id),
+                    new SchduleSLot(1,2,doctor.Id),
+                    new SchduleSLot(1,3,doctor.Id),
+                    new SchduleSLot(2,1,doctor.Id),
+                    new SchduleSLot(2,2,doctor.Id),
+                    new SchduleSLot(2,3,doctor.Id),
+                    new SchduleSLot(2,4,doctor.Id),
+                    new SchduleSLot(2,5,doctor.Id),
+                    new SchduleSLot(2,6,doctor.Id),
+                    new SchduleSLot(3,1,doctor.Id),
+                    new SchduleSLot(3,2,doctor.Id)
+                };
+                dbContext.SchduleSLots.AddRange(slots);
+            }
             dbContext.Patients.AddRange(patient);
 
             dbContext.SaveChanges();
