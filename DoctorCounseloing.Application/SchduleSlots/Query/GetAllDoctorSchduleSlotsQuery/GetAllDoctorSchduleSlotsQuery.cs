@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Booking.Application.Common.Mappings;
+using DoctorCounseloing.Application.Common.Mappings;
 using DoctorCounseloing.Application.Common;
 using DoctorCounseloing.Domain.Model;
 using DoctorCounseloing.Infrastructure.Interfaces;

@@ -30,8 +30,9 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSwaggerGen(c => c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "API", Version = "v1" }));
-//builder.Services.AddScoped<IRepository<Note>, NoteRepositry>();
-builder.Services.AddScoped<IRepository<Doctor>, DoctorRepositry>();
+
+builder.Services.AddScoped<IDoctorRepositry, DoctorRepositry>();
+builder.Services.AddScoped<IPatientRepositry, PatientRepositry>();
 builder.Services.AddScoped<IAppointmentRepositry, AppointmentRepositry>();
 builder.Services.AddScoped<ISchduleSlotRepositry, SchduleSLotRepositry>();
 

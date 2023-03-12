@@ -11,25 +11,25 @@ using System.Threading.Tasks;
 
 namespace DoctorCounseloing.Infrastructure.Repositry
 {
-    public class DoctorRepositry : IDoctorRepositry
+    public class PatientRepositry : IPatientRepositry
     {
         private DoctorCounseloingContext _context;
         private IHttpContextAccessor _httpContextAccessor;
 
-        public DoctorRepositry(DoctorCounseloingContext context, IHttpContextAccessor httpContextAccessor)
+        public PatientRepositry(DoctorCounseloingContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<IQueryable<Doctor>> GetAllDoctors(Guid clinicId)
+        public async Task<IQueryable<Patient>> GetAllPatients()
         {
-            return _context.Doctors.Where(doc => doc.ClinicId == clinicId).Include(doc=>doc.SchduleSLots).AsQueryable();
+            return _context.Patients.Include(doc => doc.Appointments).AsQueryable();
         }
 
-        public async Task<List<KeyValueItem<Guid>>> GetAllDoctorslookup(Guid clinicId)
+        public async Task<List<KeyValueItem<Guid>>> GetAllPatientslookup()
         {
-            return _context.Doctors.Where(doc => doc.ClinicId == clinicId).Select(c => new KeyValueItem<Guid>(c.Id, c.Name.DescriptionAr)).ToList();
+            return _context.Patients.Select(c => new KeyValueItem<Guid>(c.Id, c.Name.DescriptionAr)).ToList();
         }
     }
 }

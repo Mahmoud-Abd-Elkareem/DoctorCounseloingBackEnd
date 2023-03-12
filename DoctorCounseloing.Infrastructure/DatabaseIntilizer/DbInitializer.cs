@@ -20,15 +20,27 @@ namespace DoctorCounseloing.Infrastructure.DatabaseIntilizer
             new Clinic("Ali", "Ali", "AliAliAliAliAliAliAli", "AliAliAliAliAliAliAli");
             dbContext.Clinics.Add(clinic) ;
 
-            var doctor =
-            new Doctor("Ali", "Ali", "AliAliAliAliAliAliAli", "AliAliAliAliAliAliAli", clinic.Id);
+            Doctor[] doctor =
+            {
+                    new Doctor("Ali", "Ali", "AliAliAliAliAliAliAli", "AliAliAliAliAliAliAli",clinic.Id),
+                    new Doctor("Ahmed", "Ahmed", "AhmedAhmedAhmedAhmed", "AhmedAhmedAhmedAhmed",clinic.Id),
+                    new Doctor("Khalid", "Khalid", "KhalidKhalidKhalidKhalid", "KhalidKhalidKhalidKhalid",clinic.Id),
+                    new Doctor("Samy", "Samy", "SamySamySamySamySamy", "SamySamySamySamySamy", clinic.Id),
+                    new Doctor("Anwar", "Anwar", "AnwarAnwarAnwarAnwar", "AnwarAnwarAnwarAnwarAnwar", clinic.Id)
+            };
 
 
-            dbContext.Doctors.Add(doctor);
+            dbContext.Doctors.AddRange(doctor);
 
-            var patient =
-                new Patient("Ali", "Ali", new DateTime());
-            dbContext.Patients.Add(patient);
+            Patient[] patient =
+            {
+                new Patient("Ali", "Ali", new DateTime()),
+                new Patient("Ahmed", "Ahmed", new DateTime()),
+                new Patient("Khalid", "Khalid", new DateTime()),
+                new Patient("Samy", "Samy", new DateTime()),
+                new Patient("Anwar", "Anwar", new DateTime()),
+             };
+            dbContext.Patients.AddRange(patient);
 
             dbContext.SaveChanges();
         }

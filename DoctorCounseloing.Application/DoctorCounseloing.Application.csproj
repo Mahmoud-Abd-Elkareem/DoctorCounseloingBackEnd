@@ -18,4 +18,9 @@
     <ProjectReference Include="..\DoctorCounseloing.Infrastructure\DoctorCounseloing.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Doctors\Command\" />
+    <Folder Include="Patients\Command\" />
+  </ItemGroup>
+
 </Project>

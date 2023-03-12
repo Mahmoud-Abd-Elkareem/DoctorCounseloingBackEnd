@@ -1,6 +1,6 @@
 ﻿using DoctorCounseloing.Application.Common;
 
-namespace Booking.Application.Common.Mappings
+namespace DoctorCounseloing.Application.Common.Mappings
 {
     public static class MappingExtensions
     {

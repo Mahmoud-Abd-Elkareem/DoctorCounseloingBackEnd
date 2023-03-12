@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Booking.Application.Common.Mappings;
+using DoctorCounseloing.Application.Common.Mappings;
 using DoctorCounseloing.Application.Common;
+using DoctorCounseloing.Application.Common.Mappings;
 using DoctorCounseloing.Application.SchduleSlots.Query.GetAllDoctorSchduleSlotsCommand;
 using DoctorCounseloing.Infrastructure.Interfaces;
 using MediatR;
