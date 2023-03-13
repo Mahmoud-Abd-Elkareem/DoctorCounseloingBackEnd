@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DoctorCounseloing.Application.SchduleSlots.Query.DoctorSchduleSlotsQueryDto
+namespace DoctorCounseloing.Application.SchduleSlots.Query.GetDoctorDetailsQuery
 {
     public class DoctorSchduleSlotsQueryDto : IMapFrom<SchduleSLot>
     {

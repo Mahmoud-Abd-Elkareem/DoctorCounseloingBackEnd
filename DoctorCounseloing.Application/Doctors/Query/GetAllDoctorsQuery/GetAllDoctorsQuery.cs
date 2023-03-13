@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace DoctorCounseloing.Application.Doctors.Query.GetAllDoctorsQuery
 {
-    public record GetAllDoctorsQuery(Guid clinicId, int pageIndex = 0, int pageSize = 10) : IRequest<Result<PaginatedList<GetAllDoctorsQueryDto>>>;
+    public record GetAllDoctorsQuery(int pageIndex = 0, int pageSize = 10) : IRequest<Result<PaginatedList<GetAllDoctorsQueryDto>>>;
     public class GetAllDoctorsQueryHandelar : IRequestHandler<GetAllDoctorsQuery, Result<PaginatedList<GetAllDoctorsQueryDto>>>
     {
         private readonly IDoctorRepositry _doctorrepo;
@@ -25,7 +25,7 @@ namespace DoctorCounseloing.Application.Doctors.Query.GetAllDoctorsQuery
         }
         public async Task<Result<PaginatedList<GetAllDoctorsQueryDto>>> Handle(GetAllDoctorsQuery request, CancellationToken cancellationToken)
         {
-            var noteList = _doctorrepo.GetAllDoctors(request.clinicId).Result;
+            var noteList = _doctorrepo.GetAllDoctors().Result;
             var paginatedList = await noteList
                 .ProjectTo<GetAllDoctorsQueryDto>(_mapper.ConfigurationProvider)
                 .PaginatedListAsync(request.pageIndex, request.pageSize);

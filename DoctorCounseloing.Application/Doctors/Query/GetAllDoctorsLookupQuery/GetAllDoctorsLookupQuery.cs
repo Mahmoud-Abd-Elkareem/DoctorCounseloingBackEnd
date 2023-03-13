@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DoctorCounseloing.Application.Doctors.Query.GetAllDoctorsLookupQuery
 {
-    public record GetAllDoctorsLookupQuery(Guid clinicId) : IRequest<Result<List<KeyValueItem<Guid>>>>;
+    public record GetAllDoctorsLookupQuery() : IRequest<Result<List<KeyValueItem<Guid>>>>;
     public class GetAllDoctorsLookupQueryHandler : IRequestHandler<GetAllDoctorsLookupQuery, Result<List<KeyValueItem<Guid>>>>
     {
         private readonly IDoctorRepositry _doctorrepo;
@@ -25,7 +25,7 @@ namespace DoctorCounseloing.Application.Doctors.Query.GetAllDoctorsLookupQuery
 
         public async Task<Result<List<KeyValueItem<Guid>>>> Handle(GetAllDoctorsLookupQuery request, CancellationToken ct)
         {
-            var query = await _doctorrepo.GetAllDoctorslookup(request.clinicId);
+            var query = await _doctorrepo.GetAllDoctorslookup();
 
             return Result<List<KeyValueItem<Guid>>>.Success(query);
         }

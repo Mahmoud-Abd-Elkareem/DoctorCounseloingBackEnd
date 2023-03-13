@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace DoctorCounseloing.Application.Appointments.Query.GetAllPatientAppointmentQuery
 {
-    public record GetAllPatientAppointmentQuery(Guid patientId, int pageIndex = 0, int pageSize = 10) : IRequest<Result<PaginatedList<GetAllPatientAppointmentQueryDto>>>;
+    public record GetAllPatientAppointmentQuery(int pageIndex = 0, int pageSize = 10) : IRequest<Result<PaginatedList<GetAllPatientAppointmentQueryDto>>>;
     public class GetAllPatientAppointmentQueryHandelar : IRequestHandler<GetAllPatientAppointmentQuery, Result<PaginatedList<GetAllPatientAppointmentQueryDto>>>
     {
         private readonly IAppointmentRepositry _slotrepo;
@@ -26,7 +26,7 @@ namespace DoctorCounseloing.Application.Appointments.Query.GetAllPatientAppointm
         }
         public async Task<Result<PaginatedList<GetAllPatientAppointmentQueryDto>>> Handle(GetAllPatientAppointmentQuery request, CancellationToken cancellationToken)
         {
-            var noteList = _slotrepo.GetAllPatientAppointment(request.patientId).Result;
+            var noteList = _slotrepo.GetAllPatientAppointment().Result;
             var paginatedList = await noteList
                 .ProjectTo<GetAllPatientAppointmentQueryDto>(_mapper.ConfigurationProvider)
                 .PaginatedListAsync(request.pageIndex, request.pageSize);

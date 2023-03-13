@@ -19,14 +19,6 @@ namespace DoctorCounseloing.Infrastructure.EntityConfigurations
                 c.Property(n => n.DescriptionAr).HasColumnName("NameAr").IsRequired().HasMaxLength(50);
                 c.Property(n => n.DescriptionEn).HasColumnName("NameEn").HasMaxLength(50);
             });
-
-
-
-            builder.HasMany(c => c.Appointments)
-                   .WithOne()
-                   .HasForeignKey(s => s.PatientId);
-
-
         }
     }
 }

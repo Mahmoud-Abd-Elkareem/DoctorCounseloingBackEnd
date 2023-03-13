@@ -25,13 +25,6 @@ namespace DoctorCounseloing.Infrastructure.EntityConfigurations
                 c.Property(n => n.DescriptionAr).HasColumnName("DescriptionAr");
                 c.Property(n => n.DescriptionEn).HasColumnName("DescriptionEn");
             });
-
-
-            builder.HasMany(c => c.Appointments)
-                   .WithOne()
-                   .HasForeignKey(s => s.DoctorId);
-
-
         }
     }
 }

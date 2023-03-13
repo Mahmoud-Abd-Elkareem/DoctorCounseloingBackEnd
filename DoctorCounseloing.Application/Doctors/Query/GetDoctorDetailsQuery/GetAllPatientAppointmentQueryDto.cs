@@ -8,23 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DoctorCounseloing.Application.Appointments.Query.GetAllPatientAppointmentQuery
+namespace DoctorCounseloing.Application.Appointments.Query.GetDoctorDetailsQuery
 {
-    public class GetAllPatientAppointmentQueryDto : IMapFrom<Appointment>
+    public class GetAlldoctorsAppointmentQueryDto : IMapFrom<Appointment>
     {
       public string titleAr { get; set; }
       public string titleEn { get; set; }
       public string patientName { get; set; }
-      public string doctorName { get; set; }
       public DateTimeOffset appointmentDate { get; set; }
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Appointment, GetAllPatientAppointmentQueryDto>()
+            profile.CreateMap<Appointment, GetAlldoctorsAppointmentQueryDto>()
                 .ForMember(a => a.titleAr, obj => obj.MapFrom(x => x.Title.DescriptionAr))
                 .ForMember(a => a.titleEn, obj => obj.MapFrom(x => x.Title.DescriptionEn))
                 .ForMember(a => a.titleEn, obj => obj.MapFrom(x => x.Title.DescriptionEn))
                 .ForMember(a => a.patientName, obj => obj.MapFrom(x => x.Patient.Name.DescriptionAr))
-                .ForMember(a => a.doctorName, obj => obj.MapFrom(x => x.Doctor.Name.DescriptionAr))
                 .ForMember(a => a.appointmentDate, obj => obj.MapFrom(x => x.AppointmentTime));
 
         }

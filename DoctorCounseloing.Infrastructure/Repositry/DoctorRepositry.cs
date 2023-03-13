@@ -22,14 +22,19 @@ namespace DoctorCounseloing.Infrastructure.Repositry
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<IQueryable<Doctor>> GetAllDoctors(Guid clinicId)
+        public async Task<IQueryable<Doctor>> GetAllDoctors()
         {
-            return _context.Doctors.Where(doc => doc.ClinicId == clinicId).Include(doc=>doc.SchduleSLots).AsQueryable();
+            return _context.Doctors.Include(doc=>doc.SchduleSLots).Include(doc=>doc.Appointments).AsQueryable();
         }
 
-        public async Task<List<KeyValueItem<Guid>>> GetAllDoctorslookup(Guid clinicId)
+        public async Task<List<KeyValueItem<Guid>>> GetAllDoctorslookup()
         {
-            return _context.Doctors.Where(doc => doc.ClinicId == clinicId).Select(c => new KeyValueItem<Guid>(c.Id, c.Name.DescriptionAr)).ToList();
+            return _context.Doctors.Select(c => new KeyValueItem<Guid>(c.Id, c.Name.DescriptionAr)).ToList();
+        }
+
+        public async Task<Doctor> GetDoctor(Guid doctorId)
+        {
+            return _context.Doctors.Include(doc => doc.SchduleSLots).Include(doc => doc.Appointments).ThenInclude(app=>app.Patient).FirstOrDefault(doc => doc.Id == doctorId);
         }
     }
 }

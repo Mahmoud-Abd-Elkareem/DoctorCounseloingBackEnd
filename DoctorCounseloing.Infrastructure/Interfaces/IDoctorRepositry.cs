@@ -10,8 +10,9 @@ namespace DoctorCounseloing.Infrastructure.Interfaces
 {
     public interface IDoctorRepositry
     {
-        Task<IQueryable<Doctor>> GetAllDoctors(Guid clinicId);
-        Task<List<KeyValueItem<Guid>>> GetAllDoctorslookup(Guid clinicId);
+        Task<IQueryable<Doctor>> GetAllDoctors();
+        Task<List<KeyValueItem<Guid>>> GetAllDoctorslookup();
+        Task<Doctor> GetDoctor(Guid doctorIdd);
 
 
     }

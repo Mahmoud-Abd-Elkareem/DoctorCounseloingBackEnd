@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using DoctorCounseloing.Application.Common;
-using DoctorCounseloing.Application.SchduleSlots.Query.DoctorSchduleSlotsQueryDto;
 using DoctorCounseloing.Application.SchduleSlots.Query.GetAllPatientsQuery;
 using DoctorCounseloing.Domain.Model;
 using System;

@@ -15,6 +15,8 @@ namespace DoctorCounseloing.Domain.Model
         public DateTimeOffset AppointmentTime { get; set; }
         public Guid PatientId { get; private set; }
         public Guid DoctorId { get; private set; }
+        public Patient Patient { get; private set; }    
+        public Doctor Doctor { get; private set; }
 
         public Appointment()
         {

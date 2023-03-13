@@ -7,6 +7,8 @@ using System.Net;
 using DoctorCounseloing.Application.Doctors.Query.GetAllDoctorsQuery;
 using DoctorCounseloing.Application.Doctors.Query.GetAllDoctorsLookupQuery;
 using DoctorCounseloing.Infrastructure.Models;
+using DoctorCounseloing.Application.Doctors.Query.GetAllPatientsLookupQuery;
+using DoctorCounseloing.Application.Doctors.Query.GetDoctorDetailsQuery;
 
 namespace DoctorCounseloing.API.Controllers
 {
@@ -26,10 +28,18 @@ namespace DoctorCounseloing.API.Controllers
             return await _mediator.Send(query);
         }
 
+        [HttpGet("DoctorDetails")]
+        [ProducesResponseType(typeof(Result<GetDoctorDetailsQueryDto>), (int)HttpStatusCode.OK)]
+        public async Task<Result<GetDoctorDetailsQueryDto>> GetdoctorDetials([FromQuery] GetDoctorDetailsQuery query)
+        {
+            return await _mediator.Send(query);
+        }
+
         [HttpGet("lookup")]
         [ProducesResponseType(typeof(Result<List<KeyValueItem<Guid>>>), (int)HttpStatusCode.OK)]
-        public async Task<Result<List<KeyValueItem<Guid>>>> GetAlllookup([FromQuery] GetAllDoctorsLookupQuery query)
+        public async Task<Result<List<KeyValueItem<Guid>>>> GetAlllookup()
         {
+            var query = new GetAllDoctorsLookupQuery();
             return await _mediator.Send(query);
         }
     }

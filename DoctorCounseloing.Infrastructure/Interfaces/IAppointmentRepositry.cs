@@ -10,7 +10,7 @@ namespace DoctorCounseloing.Infrastructure.Interfaces
     public interface IAppointmentRepositry
     {
         Task<IQueryable<Appointment>> GetAllDoctorAppointment(Guid doctorId);
-        Task<IQueryable<Appointment>> GetAllPatientAppointment(Guid patientId);
+        Task<IQueryable<Appointment>> GetAllPatientAppointment();
         Task<bool> InsertAsync(Appointment obj);
 
     }

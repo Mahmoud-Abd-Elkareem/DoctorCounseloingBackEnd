@@ -28,9 +28,9 @@ namespace DoctorCounseloing.Infrastructure.Repositry
 
         }
 
-        public async Task<IQueryable<Appointment>> GetAllPatientAppointment(Guid patientId)
+        public async Task<IQueryable<Appointment>> GetAllPatientAppointment()
         {
-            var patientAppoitments = _context.Appointments.Where(x => x.PatientId == patientId).AsQueryable();
+            var patientAppoitments = _context.Appointments.Include(app=>app.Patient).Include(app=>app.Doctor).AsQueryable();
             return patientAppoitments;
         }
 
