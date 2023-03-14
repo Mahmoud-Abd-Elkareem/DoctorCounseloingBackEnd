@@ -26,7 +26,13 @@ namespace DoctorCounseloing.Infrastructure.DatabaseIntilizer
                     new Doctor("احمد", "Ahmed", "دكتور امراض نفسية وعصبية", "Psychiatrist and neurologist",clinic.Id),
                     new Doctor("خالد", "Khalid", "دكتور جهاز هضمي ", "Gastroenterologist",clinic.Id),
                     new Doctor("سامي", "Samy", "دكتور تخسيس ومكافحة النحافة", "Doctor of weight loss and anti-thinness", clinic.Id),
-                    new Doctor("أنور", "Anwar", "دكتور باطنة وجراحة", "Internal medicine and surgery", clinic.Id)
+                    new Doctor("أنور", "Anwar", "دكتور باطنة وجراحة", "Internal medicine and surgery", clinic.Id),
+                    new Doctor("سعاد", "Soad", "دكتور طوارئ", "Emergency doctor", clinic.Id),
+                    new Doctor("أمنية", "Omnya", "دكتور عام", "General practitioner", clinic.Id),
+                    new Doctor("أية", "Aya", "دكتور استشاري", "Consulting medical doctor", clinic.Id)
+
+
+
             };
 
 
