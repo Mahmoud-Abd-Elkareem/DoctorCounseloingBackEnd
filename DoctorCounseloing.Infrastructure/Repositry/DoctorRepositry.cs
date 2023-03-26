@@ -29,12 +29,12 @@ namespace DoctorCounseloing.Infrastructure.Repositry
 
         public async Task<List<KeyValueItem<Guid>>> GetAllDoctorslookup()
         {
-            return _context.Doctors.Select(c => new KeyValueItem<Guid>(c.Id, c.Name.DescriptionAr)).ToList();
+            return await _context.Doctors.Select(c => new KeyValueItem<Guid>(c.Id, c.Name.DescriptionAr)).ToListAsync();
         }
 
         public async Task<Doctor> GetDoctor(Guid doctorId)
         {
-            return _context.Doctors.Include(doc => doc.SchduleSLots).Include(doc => doc.Appointments).ThenInclude(app=>app.Patient).FirstOrDefault(doc => doc.Id == doctorId);
+            return await _context.Doctors.Include(doc => doc.SchduleSLots).Include(doc => doc.Appointments).ThenInclude(app=>app.Patient).FirstOrDefaultAsync(doc => doc.Id == doctorId);
         }
     }
 }

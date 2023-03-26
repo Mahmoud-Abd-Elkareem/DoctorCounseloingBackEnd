@@ -25,7 +25,7 @@ namespace DoctorCounseloing.Application.SchduleSlots.Query.GetAllDoctorSchduleSl
         }
         public async Task<Result<PaginatedList<GetAllDoctorSchduleSlotsQueryDto>>> Handle(GetAllDoctorSchduleSlotsQuery request, CancellationToken cancellationToken)
         {
-            var noteList = _apprepo.GetAllDoctorSchduleSlots(request.doctorId).Result;
+            var noteList = await _apprepo.GetAllDoctorSchduleSlots(request.doctorId);
             var paginatedList = await noteList
                 .ProjectTo<GetAllDoctorSchduleSlotsQueryDto>(_mapper.ConfigurationProvider)
                 .PaginatedListAsync(request.pageIndex, request.pageSize);

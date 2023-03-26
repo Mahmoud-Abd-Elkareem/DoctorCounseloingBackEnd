@@ -25,7 +25,7 @@ namespace DoctorCounseloing.Application.Doctors.Query.GetAllPatientsQuery
         }
         public async Task<Result<PaginatedList<GetAllPatientsQueryDto>>> Handle(GetAllPatientsQuery request, CancellationToken cancellationToken)
         {
-            var noteList = _patientrepo.GetAllPatients().Result;
+            var noteList = await _patientrepo.GetAllPatients();
             var paginatedList = await noteList
                 .ProjectTo<GetAllPatientsQueryDto>(_mapper.ConfigurationProvider)
                 .PaginatedListAsync(request.pageIndex, request.pageSize);

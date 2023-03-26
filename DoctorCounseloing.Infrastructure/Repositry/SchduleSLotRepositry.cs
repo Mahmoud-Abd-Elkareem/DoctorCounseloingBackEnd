@@ -29,7 +29,7 @@ namespace DoctorCounseloing.Infrastructure.Repositry
                 schduleSLots.ExecuteDeleteAsync();
             }
             _context.SchduleSLots.AddRange(doctorSchduleSlots);
-             return  _context.SaveChanges() == 1 ? true : false;
+             return  _context.SaveChanges() == doctorSchduleSlots.Count ? true : false;
         }
 
         public async Task<IQueryable<SchduleSLot>> GetAllDoctorSchduleSlots(Guid doctorId)

@@ -20,9 +20,11 @@ namespace DoctorCounseloing.Application.Appointments.Command.CreateAppointmentCo
         public async Task<Result<string>> Handle(CreateAppointmentCommand request, CancellationToken cancellationToken)
         {
 
-            var checkAppointment =  _appointmentrepo.GetAllDoctorAppointment(request.doctorId)
-                .ConfigureAwait(false)
-                .GetAwaiter().GetResult().Any(app => app.AppointmentTime == request.appointmentdate);
+            var doctorAppointments = await _appointmentrepo.GetAllDoctorAppointment(request.doctorId);
+
+            var checkAppointment = doctorAppointments.Any(app => app.AppointmentTime == request.appointmentdate);
+
+
 
             if (checkAppointment) return Result<string>.Failure(new string[] { "There is appointment at the same time" });
 

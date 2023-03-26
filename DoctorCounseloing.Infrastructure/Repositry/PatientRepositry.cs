@@ -29,7 +29,7 @@ namespace DoctorCounseloing.Infrastructure.Repositry
 
         public async Task<List<KeyValueItem<Guid>>> GetAllPatientslookup()
         {
-            return _context.Patients.Select(c => new KeyValueItem<Guid>(c.Id, c.Name.DescriptionAr)).ToList();
+            return await _context.Patients.Select(c => new KeyValueItem<Guid>(c.Id, c.Name.DescriptionAr)).ToListAsync();
         }
     }
 }

@@ -26,7 +26,7 @@ namespace DoctorCounseloing.Application.Appointments.Query.GetAllPatientAppointm
         }
         public async Task<Result<PaginatedList<GetAllPatientAppointmentQueryDto>>> Handle(GetAllPatientAppointmentQuery request, CancellationToken cancellationToken)
         {
-            var noteList = _slotrepo.GetAllPatientAppointment().Result;
+            var noteList = await _slotrepo.GetAllPatientAppointment();
             var paginatedList = await noteList
                 .ProjectTo<GetAllPatientAppointmentQueryDto>(_mapper.ConfigurationProvider)
                 .PaginatedListAsync(request.pageIndex, request.pageSize);
